@@ -491,7 +491,7 @@ Becomes
 | Code is more readable: multiple lines, comments, etc. | Code is in a separate file so you need move back and forth to find the function |
 | You can reuse the logic throughout the page | JavaScript can be seen as too **techie** |
 | You have full access to the built-in JavaScript libraries and can add Angular services | |
-| Most error can be seen in the JavaScript console in your browser |  |
+| Most errors can be seen in the JavaScript console in your browser |  |
 | You can debug the code in your browser developer tools (press F12) | |
 
 
