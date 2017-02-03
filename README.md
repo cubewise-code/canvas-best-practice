@@ -29,7 +29,7 @@ There are some keys principles of this document:
   * Use state parameters to pass simple values from one page to another.
   * Update URL query parameters each time a selection is made in the page. This is important for PDF creation.
   * Use Bootstrap as much as possible, it will give the look and feel consistency and allow you to switch between themes.
-  * Do not use JQuery, i.e. `$("class")...`, use Angular 1 directives instead.
+  * Do not use JQuery, i.e. `$(".class")...`, use Angular 1 directives instead. JQuery doesn't work well wih Angular applications.
 
 
 ## HTML
@@ -406,7 +406,7 @@ is a summary of the advantages and disadvantages.
 | Advantages | Disadvantages |
 | ---------- | ------------- |
 | Code is inline so it is easy to see the logic without switching to a JavaScript file | Code is placed on one line making multiple statements hard to read |
-| Variables that don't exist are automatically created including the hierarchy | Variables are automatically created making it easy for a typo in a variable name to be missed |
+| Variables that don't exist are automatically created including the hierarchy, i.e. i.e. you can just initialise `page.instance = "dev"` and Angular will create the page object for you. | Variables are automatically created making it easy for a typo in a variable name to be missed |
 | No need to prefix variables with $scope | Most errors in your logic fail silently making it difficult to find issues |
 | You don't have to know a lot about JavaScript | You can't debug the code in your browser developer tools |
 | | No direct access to JavaScript libraries such as Math |
@@ -481,6 +481,19 @@ Becomes
   <!-- Use the setDepartment function on ng-click  -->
   <button ng-click="setDepartment('Administration')" >Administration</button>
 
+  <!-- You can reuse the same function again setDepartment -->
+  <button ng-click="setDepartment('Sales')" >Sales</button>
+
 ```
+
+| Advantages | Disadvantages |
+| ---------- | ------------- |
+| Code is more readable: multiple lines, comments, etc. | Code is in a separate file so you need move back and forth to find the function |
+| You can reuse the logic throughout the page | JavaScript can be seen as too **techie** |
+| You have full access to the built-in JavaScript libraries and can add Angular services | |
+| Most error can be seen in the JavaScript console in your browser |  |
+| You can debug the code in your browser developer tools (press F12) | |
+
+
 
  
