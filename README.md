@@ -29,6 +29,7 @@ There are some keys principles of this document:
   * Use state parameters to pass simple values from one page to another.
   * Update URL query parameters each time a selection is made in the page. This is important for PDF creation.
   * Use Bootstrap as much as possible, it will give the look and feel consistency and allow you to switch between themes.
+  * Do not use JQuery, i.e. `$("class")...`, use Angular 1 directives instead.
 
 
 ## HTML
