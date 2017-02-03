@@ -3,7 +3,7 @@
     "displayName": "Canvas Best Practice",
     "description": "Canvas for TM1 Best Practice",
     "version": "1.0.0",
-    "publisher": "Cubewise",
+    "publisher": "cubewise",
     "icon": "images/logo.png",
     "engines": {
         "vscode": "^1.0.0"
