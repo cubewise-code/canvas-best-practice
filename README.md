@@ -497,14 +497,14 @@ Becomes:
 
 
 
- ## Optimising Performance
+## Optimising Performance
 
- Performance is an important consideration in any application. Canvas is designed to be easy to use, even for people with little coding background.
- Canvas obfuscates most of the difficult parts leaving you to focus on page design and functionality. This doesn't mean that you can just set and forget
- the content on your page, there is a limit to the amount of content a browser can handle quickly.
+Performance is an important consideration in any application. Canvas is designed to be easy to use, even for people with little coding background.
+Canvas obfuscates most of the difficult parts leaving you to focus on page design and functionality. This doesn't mean that you can just set and forget
+the content on your page, there is a limit to the amount of content a browser can handle quickly.
 
- Before we outline the best practices it makes sense to describe how Canvas works and therefor it's benefits and limitations. A Canvas page is built
- with a collection of Angular directives that send information to the TM1 server and each other. Below is a sample of a very simple page:
+Before we outline the best practices it makes sense to describe how Canvas works and therefor it's benefits and limitations. A Canvas page is built
+with a collection of Angular directives that send information to the TM1 server and each other. Below is a sample of a very simple page:
 
  ```html
 
