@@ -481,7 +481,7 @@ Becomes
   <!-- Use the setDepartment function on ng-click  -->
   <button ng-click="setDepartment('Administration')" >Administration</button>
 
-  <!-- You can reuse the same function again setDepartment -->
+  <!-- You can reuse the same function again -->
   <button ng-click="setDepartment('Sales')" >Sales</button>
 
 ```
