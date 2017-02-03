@@ -17,6 +17,7 @@ There are some keys principles of this document:
  * [Styles (CSS)](#styles)
  * [Javascript](#javascript)
  * [Logic in HTML or Controllers?](#logic-in-html-or-controllers)
+ * [Optimising Performance](#optimising-performance)
 
 ## <a name="general">General Rules</a>
 
@@ -463,7 +464,7 @@ Becomes:
   
 ```
 
-Becomes
+Becomes:
 
 ```javascript
 
@@ -496,4 +497,99 @@ Becomes
 
 
 
+ ## Optimising Performance
+
+ Performance is an important consideration in any application. Canvas is designed to be easy to use, even for people with little coding background.
+ Canvas obfuscates most of the difficult parts leaving you to focus on page design and functionality. This doesn't mean that you can just set and forget
+ the content on your page, there is a limit to the amount of content a browser can handle quickly.
+
+ Before we outline the best practices it makes sense to describe how Canvas works and therefor it's benefits and limitations. A Canvas page is built
+ with a collection of Angular directives that send information to the TM1 server and each other. Below is a sample of a very simple page:
+
+ ```html
+
+  <!-- A SUBMN directive is used to display a list of elements as a drop-down -->
+  <tm1-ui-subnm
+    tm1-instance="dev"
+    tm1-dimension="Department"
+    tm1-subset="Default"
+    tm1-default-element="6"
+    tm1-select-only="true"
+    ng-model="page.department"> <!-- Is updated when an item is selected -->
+  </tm1-ui-subnm>
+
+  <!-- The DBR retrieves a value from a TM1 cell and displays in on the page -->
+  <!-- When the page.department variable is updated in the SUBNM the DBR is refreshed -->
+  <tm1-ui-dbr
+    tm1-instance="dev"
+    tm1-cube="General Ledger"
+    tm1-elements='Actual,2011/12,Mar,Local,England,{{page.department}},Employee Benefits,Amount'
+   >
+  </tm1-ui-dbr>
+
+ ``` 
+
+The steps that turn this into a functioning page are as follows:
+
+  1. The HTML source page is loaded from the server.
+  2. The HTML is parsed by Angular so it can identify any directives in the page.
+  3. The `tm1-ui-subnm` and `tm1-ui-dbr` directives are loaded and replaced with regular HTML in the page.
+    * The `tm1-ui-subnm` is turned into a `<select>` element.
+    * The `tm1-ui-dbr` is converted into a `<span>` element.
+  4. `tm1-ui-subnm` loads the subset from TM1 using the REST API (via the Canvas server). 
+  5. `tm1-ui-dbr` creates a request and adds it to the **request** queue.
+  6. When requests stop being added to the **request** queue Canvas sends a batch request to the Canvas server.
+  7. The Canvas server converts the requests into one or more MDX statements and issues a request to the TM1 Server.
+  8. The results from the TM1 server then are set back to the browser to be displayed in the page.
+  9. The `tm1-ui-dbr` places a **watch** of the `page.department` variable waiting for any changes.
+  10.When a user selects an element from the `tm1-ui-subnm` list the `tm1-ui-dbr` recognises the change and repeats steps 5 - 8.
+  11. Angular also places **watches** on all of the directives waiting for any changes. See [The Digest Loop and Apply](https://www.ng-book.com/p/The-Digest-Loop-and-apply/)
+
  
+There is quite a lot going on here but it is important to understand that for every `tm1-ui-dbr` on a page there is a request
+and value to be retrieved using a MDX query. For every `tm1-ui-*` directive the page also needs to convert the directive to 
+HTML. Some directives such as the `tm1-ui-dbr` have complicated logic to handle comments, validation, formating, text boxes, 
+rich-text, etc. 
+
+What this means is that you need to think about the number of directives you place on a page. There is a limit to the number 
+of items you can place of a page while maintaining acceptable performance. Luckily there are some easy steps you can take to
+manage this number and still have the functionality you expect.
+
+
+### `ng-if` vs `ng-show/hide`
+
+Before going into specific Canvas tips we need to understand the difference between `ng-if` and `ng-hide`/`ng-show`. Although
+they seem to do the same thing how they do it is very different. `ng-if` when set to `false` removes the element from page (DOM)
+so it no longer exists. `ng-show` when `false` on the other hand adds `display: none` to the element so it is hidden but still 
+exists. Take a look at the examples below:
+
+```html
+
+  <!-- ng-if set to false -->
+  <div ng-if="false"></div>
+
+  <!-- The result in the page is just a comment -->
+  <!-- ngIf: false -->
+
+  <!-- ng-if set to false -->
+  <div ng-show="false"></div>
+
+  <!-- The result has the ng-hide CSS class added which contains: display: none !important; -->
+  <div ng-show="false" class="ng-hide"></div>
+
+```
+
+What this means for your pages is that elements hidden using `ng-hide/show` are still present in the page and therefore
+are calculated and take up resources. Elements that are hidden with `ng-if="false"` no longer exist and require no calculation
+or resources. When you set `ng-if="true"` the elements will be dynamically loaded and updated on the fly.
+
+
+### Tips for keeping your Canvas page nice and fast
+
+* Limit the number of DBR's on a page to less than 1,000. 
+* Use a combination of paging and `ng-if` to limit the amount of content on a page.
+* Dynamic parts of a page that shown on demand should toggle `ng-if`.
+* Modal and dialog content should be removed with `ng-if="false"` until they are needed.
+* For large requests with lots of rows consider using named MDX statements and `$tm1Ui.resultsetTransform()` instead of DBRs.
+
+
