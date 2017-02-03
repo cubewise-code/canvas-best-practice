@@ -10,5 +10,10 @@
     },
     "categories": [
         "Languages"
-    ]
+    ],
+    "license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/cubewise-code/canvas-vscode.git"
+	}
 }
