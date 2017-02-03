@@ -1,0 +1,14 @@
+{
+    "name": "canvas-best-practice",
+    "displayName": "Canvas Best Practice",
+    "description": "Canvas for TM1 Best Practice",
+    "version": "1.0.0",
+    "publisher": "Cubewise",
+    "icon": "images/logo.png",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Languages"
+    ]
+}
