@@ -253,6 +253,29 @@ Inline code is any JavaScript inside Angular directives such as: `ng-if`, `ng-sh
   1. $scope level variables
   1. Any functions
   1. Any initialisation code, i.e. requests to the server.
+
+
+```javascript 
+
+  // BAD
+  $scope.ShowDetail = false;
+
+  // BETTER, variables should be camelCase and part of an object
+  $scope.options = {
+    showDetail: false
+  } 
+
+```
+
+```html 
+
+  <!-- BAD -->
+  <div ng-int="ShowDetail = false"></div>
+
+  <!-- BETTER, variables should be camelCase and be part of an object -->
+  <div ng-int="options.showDetail = false"></div>
+
+```
   
 
 ```javascript
