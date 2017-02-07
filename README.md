@@ -8,7 +8,7 @@ There are some keys principles of this document:
  * Consistency **IS** quality!
  * Readability is more important than reducing key strokes.
  * All names (variables, class names, etc) should describe it's usage.
- * Comment anything that is obvious.
+ * Comment anything that isn't obvious.
 
 ## Table of Contents
 
