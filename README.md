@@ -245,9 +245,18 @@ Inline code is any JavaScript inside Angular directives such as: `ng-if`, `ng-sh
 * Use whitespace and multiple lines to increase readability.
 * Always use curly braces for all code blocks.
 * All variables should use **camelCase**.
+* All variables should be enclosed in an object as per Angular best practice.
+* A standard set of buckets for variables are as follows:
+  * `lists.*` should be used to store any lists that are used with ng-repeat, i.e. `tm1-ui-element-list`.
+  * `selections.*` should be used for all selections that are made by a user in the page. Any values in 
+  `selections` should be URL parameters as well. This will allow server-side PDF generation.
+  * `options.*` should be used to store non-data driven variables or ones that aren't mirrored
+  in the URL, i.e. show/hide an element in a page.
+* When showing and hiding elements in a page you should indicate what it does via the name remembering that 
+the default value for all variables is `false`, i.e. `null` is also `false`. Examples: 
+  * Element that defaults to hidden: `ng-if="options.showDetail"`
+  * Element that defaults to visible: `ng-if="options.hideDetail"`
 * Don't use prefixes on your variable names to indicate scope or the data type.
-* Declare $scope variables in your controller
-* Don't use ng-init to declare variables
 * All $scope level variables should be part of an object
 * Code should be in the following order: 
   1. $scope level variables
