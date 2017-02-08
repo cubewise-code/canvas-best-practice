@@ -630,4 +630,4 @@ or resources. When you set `ng-if="true"` the elements will be dynamically loade
 * Modal and dialog content should be removed with `ng-if="false"` until they are needed.
 * For large requests with lots of rows consider using named MDX statements and `$tm1Ui.resultsetTransform()` instead of DBRs.
 
-
+##### <a href="#table-of-contents">(Back to Top)</a>
