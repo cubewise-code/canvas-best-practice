@@ -19,7 +19,7 @@ There are some keys principles of this document:
  * [Logic in HTML or Controllers?](#logic-in-html-or-controllers)
  * [Optimising Performance](#optimising-performance)
 
-## <a name="general">General Rules</a>
+## General Rules
 
   * Having consistent names and case makes your code easier to follow.
   * Always use the Page Creator in the /admin console to create new pages.
@@ -33,7 +33,7 @@ There are some keys principles of this document:
   * Do not use JQuery, i.e. `$(".class")...`, use Angular 1 directives instead. JQuery doesn't work well wih Angular applications.
 
 
-## HTML
+## HTML <a href="#table-of-contents">^</a>
 
   * All html elements, attributes and id's should be **lower-case**
   * Use hyphen to separate words in a value: `id="myElement"` becomes `id="my-element"`.
@@ -97,7 +97,7 @@ There are some keys principles of this document:
 
 ```
 
-### Styles
+### Styles <a href="#table-of-contents">^</a>
 
   * Don't use `<table>` elements to layout your page. 
   * Use Bootstrap `class="col-md-4"` classes instead, this will make your page responsive to different browser sizes.
@@ -219,7 +219,7 @@ There are some keys principles of this document:
 
 ```
 
-## JavaScript
+## JavaScript <a href="#table-of-contents">^</a>
 These JavaScript rules apply to both code in your controllers as well as inline code. 
 Inline code is any JavaScript inside Angular directives such as: `ng-if`, `ng-show`, `ng-click`, etc. Example:
 ```html
@@ -384,7 +384,7 @@ app.controller('SampleCtrl', ['$scope', '$rootScope', '$interval', '$timeout', '
 
 ```
 
-## Logic in HTML or Controllers
+## Logic in HTML or Controllers <a href="#table-of-contents">^</a>
 
 One of the first questions you are going to ask when developing your first Canvas applications is when to use inline
 JavaScript or add page logic to the controller. Canvas was built to minimise the amount of code that needs to be written.
@@ -529,7 +529,7 @@ Becomes:
 
 
 
-## Optimising Performance
+## Optimising Performance <a href="#table-of-contents">^</a>
 
 Performance is an important consideration in any application. Canvas is designed to be easy to use, even for people with little coding background.
 Canvas obfuscates most of the difficult parts leaving you to focus on page design and functionality. This doesn't mean that you can just set and forget
