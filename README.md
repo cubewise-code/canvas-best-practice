@@ -249,14 +249,24 @@ Inline code is any JavaScript inside Angular directives such as: `ng-if`, `ng-sh
 * Use empty lines to separate logical code blocks.
 * Use whitespace and multiple lines to increase readability.
 * Always use curly braces for all code blocks.
+
+### Naming Conventions
+
 * All variables should use **camelCase**.
+* Singular and plural variable names should be used.
 * All variables should be enclosed in an object as per Angular best practice.
 * A standard set of buckets for variables are as follows:
+  * `defaults.*` are variables that are declared once and are changed in the page, otherwise known as constants in programming languages. This includes:
+    * Static strings/values that would be hard coded in your HTML or JavaScript. i.e. `defaults.instance = "dev"`. 
+    * Variables like the current month and year that are returned from a `dbr` and used through out the page.
   * `lists.*` should be used to store any lists that are used with ng-repeat, i.e. `tm1-ui-element-list`.
-  * `selections.*` should be used for all selections that are made by a user in the page. Any values in 
-  `selections` should be URL parameters as well. This will allow server-side PDF generation.
-  * `options.*` should be used to store non-data driven variables or ones that aren't mirrored
+  * `selections.*` should be used for all selections that are made by a user in the page. Including:
+    * **Titles** dimensions that are used in your page.
+    * **Features** such as zero suppression, text search and hiding/showing of sections, i.e. Q1, Q2, etc.
+    * Any other options that change the look and feel of the page, i.e. monthly, quarterly views.
   in the URL, i.e. show/hide an element in a page.
+  * `values.*` should store the result of any `dbr`, `dbra` or other values from server that you 
+  want to store to use elsewhere, i.e. in a calculation.
 * When showing and hiding elements in a page you should indicate what it does via the name remembering that 
 the default value for all variables is `false`, i.e. `null` is also `false`. Examples: 
   * Element that defaults to hidden: `ng-if="options.showDetail"`
