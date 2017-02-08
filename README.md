@@ -32,8 +32,9 @@ There are some keys principles of this document:
   * Use Bootstrap as much as possible, it will give the look and feel consistency and allow you to switch between themes.
   * Do not use JQuery, i.e. `$(".class")...`, use Angular 1 directives instead. JQuery doesn't work well wih Angular applications.
 
+##### <a href="#table-of-contents">(Back to Top)</a>
 
-## HTML <a href="#table-of-contents">^</a>
+## HTML
 
   * All html elements, attributes and id's should be **lower-case**
   * Use hyphen to separate words in a value: `id="myElement"` becomes `id="my-element"`.
@@ -97,7 +98,9 @@ There are some keys principles of this document:
 
 ```
 
-### Styles <a href="#table-of-contents">^</a>
+##### <a href="#table-of-contents">(Back to Top)</a>
+
+### Styles
 
   * Don't use `<table>` elements to layout your page. 
   * Use Bootstrap `class="col-md-4"` classes instead, this will make your page responsive to different browser sizes.
@@ -219,7 +222,9 @@ There are some keys principles of this document:
 
 ```
 
-## JavaScript <a href="#table-of-contents">^</a>
+##### <a href="#table-of-contents">(Back to Top)</a>
+
+## JavaScript
 These JavaScript rules apply to both code in your controllers as well as inline code. 
 Inline code is any JavaScript inside Angular directives such as: `ng-if`, `ng-show`, `ng-click`, etc. Example:
 ```html
@@ -381,10 +386,11 @@ app.controller('SampleCtrl', ['$scope', '$rootScope', '$interval', '$timeout', '
 
 });
 
-
 ```
 
-## Logic in HTML or Controllers <a href="#table-of-contents">^</a>
+##### <a href="#table-of-contents">(Back to Top)</a>
+
+## Logic in HTML or Controllers
 
 One of the first questions you are going to ask when developing your first Canvas applications is when to use inline
 JavaScript or add page logic to the controller. Canvas was built to minimise the amount of code that needs to be written.
@@ -527,9 +533,9 @@ Becomes:
 | Most errors can be seen in the JavaScript console in your browser |  |
 | You can debug the code in your browser developer tools (press F12) | |
 
+##### <a href="#table-of-contents">(Back to Top)</a>
 
-
-## Optimising Performance <a href="#table-of-contents">^</a>
+## Optimising Performance
 
 Performance is an important consideration in any application. Canvas is designed to be easy to use, even for people with little coding background.
 Canvas obfuscates most of the difficult parts leaving you to focus on page design and functionality. This doesn't mean that you can just set and forget
