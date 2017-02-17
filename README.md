@@ -253,7 +253,8 @@ Inline code is any JavaScript inside Angular directives such as: `ng-if`, `ng-sh
 ### Naming Conventions
 
 * All variables should use **camelCase**.
-* Singular and plural variable names should be used.
+* In most cases a **singular** varaible name should be used. 
+* **Plural** should only be used in the examples below and when content of the variable is an array.
 * All variables should be enclosed in an object as per Angular best practice.
 * A standard set of buckets for variables are as follows:
   * `defaults.*` are variables that are declared once and are changed in the page, otherwise known as constants in programming languages. This includes:
@@ -287,7 +288,25 @@ the default value for all variables is `false`, i.e. `null` is also `false`. Exa
   // BETTER, variables should be camelCase and part of an object
   $scope.options = {
     showDetail: false
-  } 
+  };
+
+  // BAD
+  $scope.defaults.products = "Test";
+  $scope.defaults.products = {
+    name: "Test"
+  };
+
+  // BETTER, use singular when the content is a primitive value (boolean, number or string) or an object
+  $scope.defaults.product = "Test";
+  $scope.defaults.product = {
+    name: "Test"
+  };
+
+  // BAD
+  $scope.defaults.month = "AUG";
+
+  // BETTER, use longer variable names that describe the contents of the variable
+  $scope.defaults.currentMonth = "AUG";
 
 ```
 
@@ -298,6 +317,12 @@ the default value for all variables is `false`, i.e. `null` is also `false`. Exa
 
   <!-- BETTER, variables should be camelCase and be part of an object -->
   <div ng-int="options.showDetail = false"></div>
+
+    <!-- BAD -->
+  <div ng-int="defaults.month = 'AUG'"></div>
+
+  <!-- BETTER, variables should be camelCase and be part of an object -->
+  <div ng-int="defaults.currentMonth = 'AUG'"></div>
 
 ```
   
