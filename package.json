@@ -2,7 +2,7 @@
     "name": "canvas-best-practice",
     "displayName": "Canvas Best Practice",
     "description": "Canvas for TM1 Best Practice",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "publisher": "cubewise",
     "icon": "images/logo.png",
     "engines": {
@@ -12,8 +12,8 @@
         "Languages"
     ],
     "license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/cubewise-code/canvas-best-practice.git"
-	}
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cubewise-code/canvas-best-practice.git"
+    }
 }
