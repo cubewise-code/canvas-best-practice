@@ -6,7 +6,7 @@
     "publisher": "cubewise",
     "icon": "images/logo.png",
     "engines": {
-        "vscode": "^1.0.0"
+        "vscode": "^1.1.0"
     },
     "categories": [
         "Languages"
